@@ -25,3 +25,11 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
+
+    - name: Sleep for 20 seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '20s'
+
+    - name: Terraform Destroy
+      run: terraform destroy
