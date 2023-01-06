@@ -1,0 +1,19 @@
+name: Python test
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Git clone
+      uses: actions/checkout@v3
+      
+    - name: Terraform init and apply 
+      run: |
+        terraform init
+        terraform apply
+    
