@@ -21,10 +21,6 @@ data "aws_ami" "latest_ubuntu" {
   }
 }
 
-resource "aws_eip" "my_static_ip" {
-  instance = aws_instance.my_ubuntu.id
-}
-
 resource "aws_instance" "my_ubuntu" {
   ami           = data.aws_ami.latest_ubuntu.id
   instance_type = "t2.micro"
