@@ -32,4 +32,4 @@ jobs:
         time: '20s'
 
     - name: Terraform Destroy
-      run: terraform destroy
+      run: terraform destroy -auto-approve -input=false
