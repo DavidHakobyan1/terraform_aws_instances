@@ -1,8 +1,15 @@
+terraform {
+  cloud {
+    organization = "David_Hakobyan"
+
+    workspaces {
+      name = "gh-actions-demo"
+    }
+  }
+}
+
 provider "aws" {
   region = "eu-central-1"
-  workspaces {
-    name = "gh-actions-demo"
-  }
 }
 
 data "aws_ami" "latest_ubuntu" {
