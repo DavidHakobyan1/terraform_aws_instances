@@ -35,5 +35,9 @@ resource "aws_instance" "my_ubuntu" {
 }
 
 output "server_instance_id" {
-  value = aws_instance.my_ubuntu.id
+  value = (aws_instance.my_ubuntu.id)
+}
+
+output "server_instance_name" {
+  value = (aws_instance.my_ubuntu.name)
 }
