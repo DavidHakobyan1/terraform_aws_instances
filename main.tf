@@ -9,7 +9,7 @@ terraform {
 }
 
 locals {
-  cloud_providers_name = ${var.cloud_providers_name}
+  cloud_providers_name = "${var.cloud_providers_name}"
 }
 
 provider "aws" {
