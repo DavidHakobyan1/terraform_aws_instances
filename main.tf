@@ -27,7 +27,7 @@ data "aws_ami" "latest_ubuntu" {
 
 resource "aws_instance" "my_ubuntu" {
   ami           = data.aws_ami.latest_ubuntu.id
-  instance_type = var.instance_type
+  instance_type = lookup(var.instance_type,"dev")
   provisioner "local-exec" {
     command = "echo ${local.cloud_providers_name} Instance Creations!"
   }

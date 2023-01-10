@@ -9,8 +9,12 @@ variable "region" {
 }
 
 variable "instance_type" {
-  type    = string
-  default = "t2.micro"
+  type    = map
+  default = {
+    "prod"    = "t2.large"
+    "staging" = "t2.medium"
+    "dev"     = "t2.micro"
+  }
 }
 
 variable "cloud_providers_name" {
