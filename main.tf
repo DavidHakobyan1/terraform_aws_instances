@@ -8,6 +8,10 @@ terraform {
   }
 }
 
+locals {
+  cloud_providers_name = ${var.cloud_providers_name}
+}
+
 provider "aws" {
   region = var.region
 }
@@ -25,7 +29,7 @@ resource "aws_instance" "my_ubuntu" {
   ami           = data.aws_ami.latest_ubuntu.id
   instance_type = var.instance_type
   provisioner "local-exec" {
-    command = "echo AWS Instance Creations!"
+    command = "echo local.cloud_providers_name Instance Creations!"
   }
   tags = merge(var.tags, {Name = "My Ubuntu server"})
 }

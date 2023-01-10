@@ -8,6 +8,11 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
+variable "cloud_providers_name" {
+  type    = string
+  default = "AWS"
+}
+
 variable "owners" {
   type    = list
   default = ["099720109477"]
