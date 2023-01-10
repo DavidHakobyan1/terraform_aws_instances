@@ -9,25 +9,23 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-central-1"
+  region = var.region
 }
 
 data "aws_ami" "latest_ubuntu" {
-  owners      = ["099720109477"]
-  most_recent = true
+  owners      = var.owners
+  most_recent = var.most_recent
   filter {
-    name  = "name"
+    name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
 }
 
 resource "aws_instance" "my_ubuntu" {
   ami           = data.aws_ami.latest_ubuntu.id
-  instance_type = "t2.micro"
-
-  tags = {
-    Name    = "My Ubuntu server"
-    Owner   = "David Hakobyan"
-    Project = "Terraform Homework"
+  instance_type = var.instance_type
+  provisioner "local-exec" {
+    command = "echo AWS Instance Creations!"
   }
+  tags = merge(var.tags, {Name = "My Ubuntu server"})
 }
