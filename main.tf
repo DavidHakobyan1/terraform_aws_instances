@@ -33,3 +33,7 @@ resource "aws_instance" "my_ubuntu" {
   }
   tags = merge(var.tags, {Name = "My Ubuntu server"})
 }
+
+output "server_instance_id" {
+  value = aws_instance.my_ubuntu.id
+}
