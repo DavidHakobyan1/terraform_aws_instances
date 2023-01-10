@@ -1,3 +1,8 @@
+variable "example" {
+  type = string
+  default = "yes"
+}
+
 variable "region" {
   type    = string
   default = "eu-central-1"
